@@ -1,8 +1,7 @@
 Jellyfin FastSTRM Plugin
-这是一个专为 Jellyfin 打造的 .strm 文件播放加速插件，能完美解决使用 openlist 等工具挂载网盘后，网页端播放直链时由于转码探测导致的漫长起播延迟问题。同时它完美兼容了外挂字幕的即时加载。
+这是一个专为 Jellyfin 打造的 .strm 文件播放加速插件，完美解决网页端播放直链时由于转码探测导致的漫长起播延迟问题。
 
 使用方法
-你可以通过以下两种方式安装并使用本插件：
 
 方式一：直接下载安装（推荐）
 进入本项目的 Releases 页面（https://github.com/mmyysnd/Jellyfin-FastSTRM/releases）。
@@ -13,9 +12,13 @@ Jellyfin FastSTRM Plugin
 
 方式二：下载源码自行编译
 如果你想自行编译此项目，请确保你已经安装了 .NET 9.0 SDK。
+
  ```# 克隆仓库
 git clone https://github.com/yourusername/FastSTRM.git
 cd FastSTRM
+
 # 编译生成 dll 文件
-dotnet build -c Release ```  
+
+dotnet build -c Release ```
+
 编译成功后，在 bin/Release/net9.0/ 目录下找到 FastSTRM.dll 文件，按照上方“方式一”的部署步骤，将其放进 Jellyfin 的插件目录并重启服务即可。
