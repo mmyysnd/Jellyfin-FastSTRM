@@ -15,7 +15,7 @@ Jellyfin FastSTRM Plugin
 
 ```# 克隆仓库
 git clone https://github.com/mmyysnd/Jellyfin-FastSTRM.git
-cd FastSTRM
+cd Jellyfin-FastSTRM
 
 # 编译生成 dll 文件
 
