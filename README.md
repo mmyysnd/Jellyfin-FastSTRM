@@ -4,6 +4,7 @@ Jellyfin FastSTRM Plugin
 使用方法
 
 方式一：直接下载安装（推荐）
+
 进入本项目的 Releases 页面（https://github.com/mmyysnd/Jellyfin-FastSTRM/releases）。
 下载最新编译好的 FastSTRM.dll 文件。
 将下载的 FastSTRM.dll 文件放入你 Jellyfin 服务端数据目录下的 plugins/FastSTRM 文件夹内（如果没有 FastSTRM 文件夹，请自行新建）。
