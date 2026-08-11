@@ -13,12 +13,12 @@ Jellyfin FastSTRM Plugin
 方式二：下载源码自行编译
 如果你想自行编译此项目，请确保你已经安装了 .NET 9.0 SDK。
 
- ```# 克隆仓库
+```# 克隆仓库
 git clone https://github.com/yourusername/FastSTRM.git
 cd FastSTRM
 
 # 编译生成 dll 文件
 
-dotnet build -c Release ```
-
+dotnet build -c Release
+```
 编译成功后，在 bin/Release/net9.0/ 目录下找到 FastSTRM.dll 文件，按照上方“方式一”的部署步骤，将其放进 Jellyfin 的插件目录并重启服务即可。
