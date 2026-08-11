@@ -14,7 +14,7 @@ Jellyfin FastSTRM Plugin
 如果你想自行编译此项目，请确保你已经安装了 .NET 9.0 SDK。
 
 ```# 克隆仓库
-git clone https://github.com/yourusername/FastSTRM.git
+git clone https://github.com/mmyysnd/Jellyfin-FastSTRM.git
 cd FastSTRM
 
 # 编译生成 dll 文件
