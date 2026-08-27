@@ -1,0 +1,75 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name (e.g. v3.0.0)'
+        required: true
+        default: 'v3.0.0'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Build Release DLL
+        run: dotnet build -c Release
+
+      - name: Prepare Release Assets
+        run: |
+          mkdir -p release-pkg
+          cp bin/Release/net9.0/FastSTRM.dll release-pkg/
+          cp README.md release-pkg/
+          cp CHANGELOG.md release-pkg/
+          cp meta.json release-pkg/
+          cp build.yaml release-pkg/
+          zip -j FastSTRM.zip release-pkg/*
+          cp bin/Release/net9.0/FastSTRM.dll ./FastSTRM.dll
+
+      - name: Extract Release Notes
+        id: notes
+        run: |
+          # Extract release notes for current tag from CHANGELOG.md
+          VERSION="${{ github.event.inputs.tag_name || github.ref_name }}"
+          CLEAN_VER="${VERSION#v}"
+          
+          if grep -q "## \[$CLEAN_VER\]" CHANGELOG.md; then
+            awk -v ver="## [$CLEAN_VER]" '
+              $0 ~ ver { flag=1; next }
+              flag && /^## \[/ { flag=0 }
+              flag { print }
+            ' CHANGELOG.md > RELEASE_NOTES.md
+          else
+            cp CHANGELOG.md RELEASE_NOTES.md
+          fi
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag_name || github.ref_name }}
+          name: Jellyfin-FastSTRM ${{ github.event.inputs.tag_name || github.ref_name }}
+          body_path: RELEASE_NOTES.md
+          draft: false
+          prerelease: false
+          files: |
+            FastSTRM.dll
+            FastSTRM.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
