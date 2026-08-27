@@ -1,0 +1,12 @@
+---
+name: "FastSTRM"
+guid: "a1b2c3d4-5678-9abc-def0-123456789abc"
+version: "3.0.0.0"
+targetAbi: "10.11.0.0"
+framework: "net9.0"
+overview: "消除 .strm 文件播放时的 ffprobe 延迟，实现秒开起播"
+description: "通过装饰器模式拦截 GetPlaybackMediaSources，对已有流信息的 .strm 文件跳过 ffprobe 网络探测，同时提供全库预探测和入库自动探测功能。"
+category: "General"
+owner: "FastSTRM"
+artifacts:
+  - "FastSTRM.dll"

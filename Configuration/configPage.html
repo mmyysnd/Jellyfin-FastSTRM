@@ -1,0 +1,85 @@
+<div id="FastStrmConfigurationPage" data-role="page" class="page type-interior pluginConfigurationPage" data-controller="__plugin/FastSTRM.js">
+    <div class="content-primary" style="max-width: 800px;">
+        
+        <!-- 页面标题 -->
+        <div class="verticalSection">
+            <h2 class="sectionTitle" style="margin-bottom: 0.3em;">FastSTRM</h2>
+        </div>
+
+        <!-- 全库预探测面板卡片 -->
+        <div class="verticalSection verticalSection-extrabottompadding">
+
+            <!-- 面板卡片 -->
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 1.4em;">
+                
+                <!-- 三大指标 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1em; padding-bottom: 1.2em; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: center;">
+                    <div>
+                        <div style="font-size: 0.8em; color: #888; margin-bottom: 0.2em;">.strm 媒体数量</div>
+                        <div id="lblSummaryTotal" style="font-size: 1.6em; font-weight: 600; color: #fff;">-</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.8em; color: #81c784; margin-bottom: 0.2em;">已有流信息</div>
+                        <div id="lblSummaryProbed" style="font-size: 1.6em; font-weight: 600; color: #4caf50;">-</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.8em; color: #ffb74d; margin-bottom: 0.2em;">缺少流信息</div>
+                        <div id="lblSummaryUnprobed" style="font-size: 1.6em; font-weight: 600; color: #ff9800;">-</div>
+                    </div>
+                </div>
+
+                <!-- 模式选择与按钮 -->
+                <div class="flex align-items-center" style="gap: 0.8em; margin-top: 1.2em; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 180px;">
+                        <select is="emby-select" id="selectProbeMode" class="emby-select" style="margin: 0; width: 100%; height: 38px; box-sizing: border-box;">
+                            <option value="Incremental">增量探测</option>
+                            <option value="Full">全量探测</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button is="emby-button" type="button" id="btnStartProbe" class="raised button-submit" style="margin: 0; min-width: 120px; height: 38px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;">
+                            <span>启动预探测</span>
+                        </button>
+                        <button is="emby-button" type="button" id="btnStopProbe" class="raised" style="margin: 0; min-width: 120px; height: 38px; box-sizing: border-box; display: none; background: #b71c1c; color: white; align-items: center; justify-content: center;">
+                            <span>停止</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 实时进度区域 -->
+                <div id="probeProgressSection" style="margin-top: 1.4em;">
+                    <div style="font-size: 0.85em; margin-bottom: 0.5em;">
+                        <span id="lblTaskStatus" style="color: #999;">执行状态: 空闲</span>
+                    </div>
+
+                    <div style="width: 100%; height: 6px; background: rgba(255, 255, 255, 0.08); border-radius: 3px; overflow: hidden;">
+                        <div id="probeProgressBar" style="width: 0%; height: 100%; background: #00a4dc; transition: width 0.25s ease;"></div>
+                    </div>
+
+                    <div id="probeCurrentItemRow" style="font-size: 0.8em; color: #777; margin-top: 0.6em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        正在探测: <span id="lblCurrentItem" style="color: #bbb;">-</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 配置表单区 -->
+        <form class="fastStrmConfigurationForm">
+            <div class="verticalSection verticalSection-extrabottompadding">
+                <div class="checkboxContainer checkboxContainer-anonymouscheckbox">
+                    <label>
+                        <input is="emby-checkbox" type="checkbox" id="chkEnableAutoProbe" />
+                        <span>Strm入库自动探测</span>
+                    </label>
+                </div>
+                <div>
+                    <button is="emby-button" type="submit" class="raised button-submit block emby-button">
+                        <span>保存</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

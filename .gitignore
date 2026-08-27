@@ -1,0 +1,15 @@
+# Build Results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS Generated
+.DS_Store
+Thumbs.db

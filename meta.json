@@ -1,0 +1,11 @@
+{
+  "guid": "a1b2c3d4-5678-9abc-def0-123456789abc",
+  "name": "FastSTRM",
+  "description": "消除 .strm 文件播放时的 ffprobe 延迟，实现秒开起播",
+  "overview": "STRM 秒开插件",
+  "version": "3.0.0.0",
+  "targetAbi": "10.11.0.0",
+  "owner": "FastSTRM",
+  "category": "General",
+  "status": "Active"
+}
